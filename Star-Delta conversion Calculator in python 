@@ -1,0 +1,52 @@
+# Star-Delta Conversion Calculator
+
+print("Star-Delta Conversion Calculator")
+print("1. Star to Delta")
+print("2. Delta to Star")
+
+choice = int(input("Enter your choice (1 or 2): "))
+
+if choice == 1:
+    print("\nStar to Delta Conversion")
+
+    RA = float(input("Enter RA (Ohms): "))
+    RB = float(input("Enter RB (Ohms): "))
+    RC = float(input("Enter RC (Ohms): "))
+
+    if RA > 0 and RB > 0 and RC > 0:
+        total = (RA * RB) + (RB * RC) + (RC * RA)
+
+        RAB = total / RC
+        RBC = total / RA
+        RCA = total / RB
+
+        print("\nDelta Resistances:")
+        print("RAB =", round(RAB, 2), "Ohms")
+        print("RBC =", round(RBC, 2), "Ohms")
+        print("RCA =", round(RCA, 2), "Ohms")
+    else:
+        print("Enter positive resistance values.")
+
+elif choice == 2:
+    print("\nDelta to Star Conversion")
+
+    RAB = float(input("Enter RAB (Ohms): "))
+    RBC = float(input("Enter RBC (Ohms): "))
+    RCA = float(input("Enter RCA (Ohms): "))
+
+    if RAB > 0 and RBC > 0 and RCA > 0:
+        total = RAB + RBC + RCA
+
+        RA = (RAB * RCA) / total
+        RB = (RAB * RBC) / total
+        RC = (RBC * RCA) / total
+
+        print("\nStar Resistances:")
+        print("RA =", round(RA, 2), "Ohms")
+        print("RB =", round(RB, 2), "Ohms")
+        print("RC =", round(RC, 2), "Ohms")
+    else:
+        print("Enter positive resistance values.")
+
+else:
+    print("Invalid choice.")
